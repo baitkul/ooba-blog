@@ -17,6 +17,7 @@ export default {
     '@/plugins/utils.js',
     '@/plugins/lazyload.js',
     '@/plugins/mask.js',
+    '@/plugins/element-ui.js'
   ],
   buildModules: [
     '@nuxtjs/eslint-module',
@@ -28,6 +29,17 @@ export default {
     '@nuxtjs/axios'
   ],
   axios: require('./configs/axios'),
-  googleFonts: require('./configs/google-fonts'),
+  // googleFonts: require('./configs/google-fonts'),
   build: require('./configs/build'),
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.API_BASE_URL || 'localhost:4601'
+    }
+  },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_BASE_URL || 'localhost:4601'
+    }
+  },
 }

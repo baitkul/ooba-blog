@@ -2,7 +2,7 @@ module.exports = {
   redirect: {
     login: '/login',
     logout: '/login',
-    home: '/stories',
+    home: '/',
   },
   strategies: {
     local: {

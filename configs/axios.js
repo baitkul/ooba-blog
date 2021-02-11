@@ -1,3 +1,3 @@
 module.exports = {
-  baseURL: process.env.API_BASE_URL
+  baseURL: process.env.API_BASE_URL || 'http://localhost:4601'
 }
