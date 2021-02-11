@@ -13,7 +13,7 @@ module.exports = {
     production: {
       user: 'root',
       host: '37.252.0.55',
-      ref: 'origin/master',
+      ref: 'origin/main',
       ssh_options: ['ForwardAgent=yes'],
       repo: 'https://github.com/baitkul/ooba-blog.git',
       path: '/var/www/ooba-blog',
