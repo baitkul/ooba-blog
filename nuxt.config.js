@@ -29,17 +29,6 @@ export default {
     '@nuxtjs/axios'
   ],
   axios: require('./configs/axios'),
-  // googleFonts: require('./configs/google-fonts'),
+  proxy: require('./configs/proxy'),
   build: require('./configs/build'),
-
-  publicRuntimeConfig: {
-    axios: {
-      browserBaseURL: process.env.API_BASE_URL || 'localhost:4601'
-    }
-  },
-  privateRuntimeConfig: {
-    axios: {
-      baseURL: process.env.API_BASE_URL || 'localhost:4601'
-    }
-  },
 }

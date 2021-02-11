@@ -11,7 +11,7 @@
       :key="item.slug"
       class="mb-10 mr-3 card-blog">
       <img
-        :src="'http://localhost:4601'+ item.imageUrl"
+        :src="item.imageUrl"
         class="object-cover w-full"
         style="height: 400px;"
       />

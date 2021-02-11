@@ -29,7 +29,7 @@
           <img
             class="object-contain w-full"
             style="height: 367px"
-            :src="'http://localhost:4601'+ blocks.data.file.url"
+            :src="blocks.data.file.url"
             alt="article" />
         </div>
       </div>

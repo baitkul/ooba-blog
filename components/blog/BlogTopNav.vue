@@ -161,7 +161,7 @@
 <script>
 export default {
   async fetch() {
-    const { result } = await this.$axios.$get('/api/v1/blog/public/article-tags')
+    const { result } = await this.$axios.$get('/api/blog/public/article-tags')
     this.menus = result
   },
   data: () => ({

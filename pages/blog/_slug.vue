@@ -13,8 +13,8 @@
 export default {
   async fetch() {
     const params = { page: 1, pageSize: 3 }
-    const data = await this.$axios.$get('/api/v1/blog/public/articles/' + this.$route.params.slug)
-    const { result } = await this.$axios.$get('/api/v1/blog/public/articles/', { params })
+    const data = await this.$axios.$get('/api/blog/public/articles/' + this.$route.params.slug)
+    const { result } = await this.$axios.$get('/api/blog/public/articles/', { params })
     this.records = result
     this.blog = data
     console.log(data)

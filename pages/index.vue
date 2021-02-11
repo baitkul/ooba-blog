@@ -33,7 +33,7 @@
 export default {
   async fetch() {
     const params = { page: this.page, pageSize: this.pageSize }
-    const { total, result } = await this.$axios.$get('/api/v1/blog/public/articles', { params })
+    const { total, result } = await this.$axios.$get('/api/blog/public/articles', { params })
     this.total = total
     this.model = result
   },
