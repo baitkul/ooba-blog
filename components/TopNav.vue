@@ -205,7 +205,11 @@ export default {
       return this.$route.path.endsWith(url)
     },
     submit() {
-      this.$router.push({ path: '/blogs/?search=' + this.input })
+      if (this.input.length <= 0) {
+        return false
+      } else {
+        this.$router.push({ path: '/blogs/?search=' + this.input })
+      }
     },
     toggleMenu() {
       this.menuVisible = !this.menuVisible
