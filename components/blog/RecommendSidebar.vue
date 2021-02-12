@@ -15,7 +15,7 @@
           style="word-break: break-word">
           {{ item.title }}
         </NuxtLink>
-        <p class="mt-3"> {{ firstBlock(item.body.blocks) }} </p>
+        <p class="mt-3" v-html="firstBlock(item.body.blocks)">  </p>
         <div class="flex flex-wrap mt-5">
           <NuxtLink
 

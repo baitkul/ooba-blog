@@ -35,6 +35,9 @@ export default {
     this.model = result
     this.loading = false
   },
+  head() {
+    return { title: 'Блог Ooba.kg' }
+  },
   data: () => ({
     total: 0,
     page: 1,

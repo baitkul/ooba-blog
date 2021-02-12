@@ -21,8 +21,7 @@
       v-for="(blocks, idx) in data.body.blocks"
       :key="idx"
       class="mt-7">
-      <p v-if="blocks.type === 'paragraph'">
-        {{ blocks.data.text }}
+      <p v-if="blocks.type === 'paragraph'" v-html="blocks.data.text">
       </p>
       <div v-if="blocks.type === 'image'" class="mt-5">
         <h3 class="text-xl font-bold">{{ blocks.data.caption }}</h3>
@@ -35,9 +34,16 @@
         </div>
       </div>
       <div v-if="blocks.type === 'header'">
-        <h1 class="text-2xl font-bold">
-          {{ blocks.data.text }}
+        <h1 class="text-2xl font-bold" v-html="blocks.data.text">
         </h1>
+      </div>
+      <div v-if="blocks.type === 'button'">
+        <div class="flex justify-center w-full py-3">
+          <a
+            class="px-5 py-3 border border-black hover:bg-black hover:text-white"
+            target="_blank"
+            :href="blocks.data.link">{{ blocks.data.input }}</a>
+        </div>
       </div>
     </div>
 

@@ -27,6 +27,10 @@ export default {
     this.loading = false
   },
   layout: 'blog',
+
+  head() {
+    return { title: this.blog && this.blog.title ? this.blog.title : 'Блог Ooba.kg' }
+  },
   data: () => ({
     blog: undefined,
     records: undefined,

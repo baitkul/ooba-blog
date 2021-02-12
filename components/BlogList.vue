@@ -20,8 +20,8 @@
           {{ item.title }}
         </h2>
         <p
-          class="mt-5 text-lg">
-          {{ firstBlock(item.body.blocks) }}
+          class="mt-5 text-lg"
+          v-html="firstBlock(item.body.blocks)">
         </p>
         <div class="flex flex-wrap mt-5">
           <NuxtLink
