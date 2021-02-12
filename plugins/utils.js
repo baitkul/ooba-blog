@@ -23,7 +23,7 @@ export default (_, inject) => {
   })
 }
 
-function formatDate(value, dateFormat = 'dd.MM.yyyy') {
+function formatDate(value, dateFormat = 'dd.MM.yyyy | k:m') {
   if (value instanceof Date || Object.prototype.toString.call(value) === '[object Date]') {
     return format(value, dateFormat)
   }

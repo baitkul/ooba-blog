@@ -15,7 +15,7 @@
           style="word-break: break-word">
           {{ item.title }}
         </NuxtLink>
-        <p class="mt-3">{{ item.body.blocks[0].data.text.length > 100 ? item.body.blocks[0].data.text.slice(0, 100) + '...' : item.body.blocks[0].data.text }} </p>
+        <p class="mt-3"> {{ firstBlock(item.body.blocks) }} </p>
         <div class="flex flex-wrap mt-5">
           <NuxtLink
 
@@ -42,6 +42,12 @@ export default {
   },
   created() {
     console.log(this.data)
+  },
+  methods: {
+    firstBlock(blocks) {
+      const filter = blocks.filter(bl => bl.type === 'paragraph')
+      return filter[0].data.text.length > 100 ? filter[0].data.text.slice(0, 100) + '...' : filter[0].data.text
+    }
   }
 }
 </script>

@@ -15,8 +15,11 @@
         </div>
       </div>
 
-      <div class="mt-10">
-        <BlogList :list="model" />
+      <div class="mt-10" style="min-height: 75vh">
+        <div v-if="loading" class="flex items-center justify-center">
+          <div style="width: 60px; height: 60px;" class="border-t-2 border-l-2 border-pink-600 rounded-full animate-spin"></div>
+        </div>
+        <BlogList v-else :list="model" />
       </div>
     </div>
   </div>
@@ -25,10 +28,12 @@
 export default {
   layout: 'blog',
   async fetch() {
+    this.loading = true
     const params = { page: this.page, pageSize: this.pageSize, tagSlug: this.tag, title: this.title }
     const { total, result } = await this.$axios.$get('/api/blog/public/articles/', { params })
     this.total = total
     this.model = result
+    this.loading = false
   },
   data: () => ({
     total: 0,
@@ -36,7 +41,8 @@ export default {
     pageSize: 9,
     model: undefined,
     tag: '',
-    title: ''
+    title: '',
+    loading: true
   }),
   watch: {
     '$route.query.search'(search) {

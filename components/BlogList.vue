@@ -9,7 +9,7 @@
       v-for="item in list"
       v-else
       :key="item.slug"
-      class="mb-10 mr-3 card-blog">
+      class="mb-10 mr-3 lg:mt-0 card-blog">
       <img
         :src="item.imageUrl"
         class="object-cover w-full"
@@ -35,7 +35,7 @@
         </div>
         <div class="flex items-center justify-between mt-5">
           <div>
-            21.12.21 | 15:30
+            {{ $utils.formatDate(item.createdAt) }}
           </div>
           <NuxtLink
             :to="`/blog/${item.slug}`"
@@ -69,7 +69,7 @@ export default {
 <style>
 .card-blog {
   width: 100%;
-  margin: 0;
+  margin: 0 0 30px 0;
 }
 
 @media screen and (min-width: 768px) {

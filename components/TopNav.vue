@@ -1,163 +1,180 @@
 <template>
-  <div
-    id="fixedNav"
-    class="fixed top-0 left-0 w-full"
-    style="transition: 0.5s"
-    :class="{ 'scrolled': !view.atTopOfPage }">
-    <nav class="flex items-center justify-between text-white container-auto" style="height: 80px">
-      <div>
-        <img src="/images/Logo.svg" alt="logo" />
-      </div>
-
-      <transition
-        enter-active-class="transition-opacity duration-100 ease-linear"
-        leave-active-class="transition-opacity duration-100 ease-linear delay-75"
-        enter-class="opacity-80"
-        leave-to-class="opacity-80"
-      >
-        <div
-          v-show="menuVisible"
-          class="fixed inset-0 z-50 bg-black bg-opacity-30"
-          @click="closeMenu"
-        >
-          <transition
-            enter-active-class="transition-transform duration-100 ease-out transform"
-            leave-active-class="transition-transform duration-100 ease-in transform"
-            enter-class="-translate-y-8"
-            leave-to-class="-translate-y-8"
-          >
-            <div v-show="menuVisible" class="bg-white">
-              <div class="flex items-center h-20 px-4 ">
-                <nuxt-link to="/">
-                  <img src="/images/Logo.svg" class="h-8 md:h-10" />
-                </nuxt-link>
-
-                <div class="flex justify-end flex-1 lg:hidden">
-                  <button class="text-gray-600" @click="closeMenu">
-                    <i class="text-2xl fal fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <NuxtLink
-                to="/"
-                exact-active-class="text-pink-600"
-                class="flex items-center px-4 text-base text-black border-t border-gray-300 h-14">
-                Главная
-              </NuxtLink>
-              <NuxtLink
-                v-for="(menu, idx) in menus"
-                :key="idx"
-                :to="'/blogs/'+ menu.slug"
-                class="flex items-center px-4 text-black border-t border-gray-300 h-14"
-              >
-                {{ menu.title }}
-              </NuxtLink>
-            </div>
-          </transition>
-        </div>
-      </transition>
-
-
-      <div class="hidden lg:block">
-        <div class="flex space-x-3 xl:space-x-8 ">
-          <NuxtLink to="/" exact-active-class="text-pink-600">
-            Главная
-          </NuxtLink>
-          <NuxtLink
-            v-for="(menu, idx) in menus"
-            :key="idx"
-            exact-active-class="text-pink-600"
-            :to="'/blogs/'+ menu.slug">
-            {{ menu.title }}
-          </NuxtLink>
-        </div>
-      </div>
-
-      <div></div>
-
-      <div class="flex ">
+  <div>
+    <div
+      id="fixedNav"
+      class="fixed top-0 left-0 w-full"
+      style="transition: 0.5s; z-index: 10;"
+      :class="{ 'scrolled': !view.atTopOfPage }">
+      <nav class="flex items-center justify-between text-white container-auto" style="height: 80px">
         <div>
-          <button
-            class="px-4 py-3 text-pink-600 outline-none focus-within:outline-none focus:outline-none"
-            style="line-height: 30px"
-            @click="inputFocus"
+          <NuxtLink to="/"> <img src="/images/Logo.svg" alt="logo" /></NuxtLink>
+        </div>
+
+        <transition
+          enter-active-class="transition-opacity duration-100 ease-linear"
+          leave-active-class="transition-opacity duration-100 ease-linear delay-75"
+          enter-class="opacity-80"
+          leave-to-class="opacity-80"
+        >
+          <div
+            v-show="menuVisible"
+            class="fixed inset-0 z-50 bg-black bg-opacity-30"
+            @click="closeMenu"
           >
-            <i v-if="!inputActive">
+            <transition
+              enter-active-class="transition-transform duration-100 ease-out transform"
+              leave-active-class="transition-transform duration-100 ease-in transform"
+              enter-class="-translate-y-8"
+              leave-to-class="-translate-y-8"
+            >
+              <div v-show="menuVisible" class="bg-white">
+                <div class="flex items-center h-20 px-4">
+                  <nuxt-link to="/">
+                    <img src="/images/Logo.svg" class="h-8 md:h-10" />
+                  </nuxt-link>
+
+                  <div class="flex justify-end flex-1 lg:hidden">
+                    <button class="text-gray-600" @click="closeMenu">
+                      <i class="mr-2 text-3xl fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <NuxtLink
+                  to="/"
+                  exact-active-class="text-pink-600"
+                  class="flex items-center px-4 text-black border-t border-gray-300 h-14">
+                  Главная
+                </NuxtLink>
+                <NuxtLink
+                  v-for="(menu, idx) in menus"
+                  :key="idx"
+                  :to="'/blogs/'+ menu.slug"
+                  exact-active-class="text-pink-600"
+                  class="flex items-center px-4 text-black border-t border-gray-300 h-14"
+                >
+                  {{ menu.title }}
+                </NuxtLink>
+              </div>
+            </transition>
+          </div>
+        </transition>
+
+
+        <div class="hidden lg:block">
+          <div class="flex space-x-3 xl:space-x-8 ">
+            <NuxtLink to="/" exact-active-class="text-pink-600">
+              Главная
+            </NuxtLink>
+            <NuxtLink
+              v-for="(menu, idx) in menus"
+              :key="idx"
+              exact-active-class="text-pink-600"
+              :to="'/blogs/'+ menu.slug">
+              {{ menu.title }}
+            </NuxtLink>
+          </div>
+        </div>
+
+        <div></div>
+
+        <div class="flex ">
+          <div>
+            <button
+              class="px-4 py-3 text-pink-600 outline-none focus-within:outline-none focus:outline-none"
+              style="line-height: 30px"
+              @click="inputFocus"
+            >
+              <i v-if="!inputActive">
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M23.8125 21.9844L18.1406 16.3125C18 16.2188 17.8594 16.125 17.7188 16.125H17.1094C18.5625 14.4375 19.5 12.1875 19.5 9.75C19.5 4.40625 15.0938 0 9.75 0C4.35938 0 0 4.40625 0 9.75C0 15.1406 4.35938 19.5 9.75 19.5C12.1875 19.5 14.3906 18.6094 16.125 17.1562V17.7656C16.125 17.9062 16.1719 18.0469 16.2656 18.1875L21.9375 23.8594C22.1719 24.0938 22.5469 24.0938 22.7344 23.8594L23.8125 22.7812C24.0469 22.5938 24.0469 22.2188 23.8125 21.9844ZM9.75 17.25C5.57812 17.25 2.25 13.9219 2.25 9.75C2.25 5.625 5.57812 2.25 9.75 2.25C13.875 2.25 17.25 5.625 17.25 9.75C17.25 13.9219 13.875 17.25 9.75 17.25Z" fill="#DD3564" />
+                </svg>
+
+              </i>
+              <i
+                v-else
+                style="font-size: 24px; height: 24px; width: 24px"
+                class="fas fa-times"></i>
+            </button>
+          </div>
+          <div
+            class="flex items-center justify-center text-xl text-pink-600 outline-none lg:hidden focus-within:outline-none focus:outline-none"
+          >
+            <button
+              class="px-4 py-3 outline-none focus:outline-none"
+              @click="openMenu"
+            >
               <svg
                 width="24"
-                height="25"
+                height="24"
                 viewBox="0 0 24 25"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path d="M23.8125 21.9844L18.1406 16.3125C18 16.2188 17.8594 16.125 17.7188 16.125H17.1094C18.5625 14.4375 19.5 12.1875 19.5 9.75C19.5 4.40625 15.0938 0 9.75 0C4.35938 0 0 4.40625 0 9.75C0 15.1406 4.35938 19.5 9.75 19.5C12.1875 19.5 14.3906 18.6094 16.125 17.1562V17.7656C16.125 17.9062 16.1719 18.0469 16.2656 18.1875L21.9375 23.8594C22.1719 24.0938 22.5469 24.0938 22.7344 23.8594L23.8125 22.7812C24.0469 22.5938 24.0469 22.2188 23.8125 21.9844ZM9.75 17.25C5.57812 17.25 2.25 13.9219 2.25 9.75C2.25 5.625 5.57812 2.25 9.75 2.25C13.875 2.25 17.25 5.625 17.25 9.75C17.25 13.9219 13.875 17.25 9.75 17.25Z" fill="#DD3564" />
+                <rect
+                  y="0.389648"
+                  width="31"
+                  height="3"
+                  fill="#FA3C6B" />
+                <rect
+                  y="11.3896"
+                  width="31"
+                  height="3"
+                  fill="#FA3C6B" />
+                <rect
+                  y="22.3896"
+                  width="31"
+                  height="3"
+                  fill="#FA3C6B" />
               </svg>
-
-            </i>
-            <i
-              v-else
-              style="font-size: 24px; height: 24px; width: 24px"
-              class="fas fa-times"></i>
-          </button>
+            </button>
+          </div>
         </div>
-        <div
-          class="flex items-center justify-center text-xl text-pink-600 outline-none lg:hidden focus-within:outline-none focus:outline-none"
-        >
+      </nav>
+    </div>
+    <transition
+      enter-active-class="transition-transform duration-200 ease-out transform"
+      leave-active-class="transition-transform duration-200 ease-in transform"
+      enter-class="opacity-100"
+      leave-to-class="translate-y-4"
+    >
+      <div
+        v-show="inputActive"
+        class="fixed left-0 right-0 flex items-center justify-center w-screen h-screen delay-100 opacity-0"
+        style="backdrop-filter: blur(28px); z-index: 999; background: rgba(0, 0, 0, 0.8); opacity: 1; padding: 10px 20px"
+      >
+        <form
+          class="flex justify-center container-auto"
+          @submit.prevent="submit"
+          @keyup.esc="closeForm">
+          <input
+            ref="inputForm"
+            v-model="input"
+            class="px-2 py-3 text-white border-b-2 border-pink-600 outline-none w-80 bg-none focus:outline-none focus-within:outline-none"
+            style="background: rgba(0, 0, 0, 0); width: calc(100% - 25px)"
+            type="text" />
           <button
-            class="px-4 py-3 outline-none focus:outline-none"
-            @click="openMenu"
+            type="submit"
+            class="px-3 py-3 ml-3 text-pink-600 rounded-md outline-none hover:text-pink-500 focus-within:outline-none focus:outline-none"
           >
             <svg
               width="24"
               height="24"
               viewBox="0 0 24 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <rect
-                y="0.389648"
-                width="31"
-                height="3"
-                fill="#FA3C6B" />
-              <rect
-                y="11.3896"
-                width="31"
-                height="3"
-                fill="#FA3C6B" />
-              <rect
-                y="22.3896"
-                width="31"
-                height="3"
-                fill="#FA3C6B" />
+              fill="none">
+              <path d="M23.8125 21.9844L18.1406 16.3125C18 16.2188 17.8594 16.125 17.7188 16.125H17.1094C18.5625 14.4375 19.5 12.1875 19.5 9.75C19.5 4.40625 15.0938 0 9.75 0C4.35938 0 0 4.40625 0 9.75C0 15.1406 4.35938 19.5 9.75 19.5C12.1875 19.5 14.3906 18.6094 16.125 17.1562V17.7656C16.125 17.9062 16.1719 18.0469 16.2656 18.1875L21.9375 23.8594C22.1719 24.0938 22.5469 24.0938 22.7344 23.8594L23.8125 22.7812C24.0469 22.5938 24.0469 22.2188 23.8125 21.9844ZM9.75 17.25C5.57812 17.25 2.25 13.9219 2.25 9.75C2.25 5.625 5.57812 2.25 9.75 2.25C13.875 2.25 17.25 5.625 17.25 9.75C17.25 13.9219 13.875 17.25 9.75 17.25Z" fill="#DD3564" />
             </svg>
           </button>
-        </div>
+          <button class="px-3 py-3 text-xl text-pink-600 shadow-none outline-none focus-within:outline-none focus:outline-none" @click="inputFocus">
+            &#10006;
+          </button>
+        </form>
       </div>
-    </nav>
-
-    <div
-      class="fixed left-0 right-0 items-center justify-center delay-100 opacity-0 container-auto"
-      style="top: -100%; height: 80px; backdrop-filter: blur(28px); background: rgba(0, 0, 0, 0.8); opacity: 1; padding: 10px 20px"
-      :style="inputActive ? 'top: 80px;' : '' ">
-      <form class="flex justify-center w-full" @submit.prevent="submit">
-        <input
-          ref="inputForm"
-          v-model="input"
-          class="px-2 py-3 text-white border-b-2 border-pink-600 outline-none w-80 bg-none focus:outline-none focus-within:outline-none"
-          style="background: rgba(0, 0, 0, 0)"
-          type="text" />
-        <button
-          type="submit"
-          class="px-3 py-3 ml-3 text-pink-600 rounded-md outline-none hover:text-pink-500 focus-within:outline-none focus:outline-none"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 25"
-            fill="none">
-            <path d="M23.8125 21.9844L18.1406 16.3125C18 16.2188 17.8594 16.125 17.7188 16.125H17.1094C18.5625 14.4375 19.5 12.1875 19.5 9.75C19.5 4.40625 15.0938 0 9.75 0C4.35938 0 0 4.40625 0 9.75C0 15.1406 4.35938 19.5 9.75 19.5C12.1875 19.5 14.3906 18.6094 16.125 17.1562V17.7656C16.125 17.9062 16.1719 18.0469 16.2656 18.1875L21.9375 23.8594C22.1719 24.0938 22.5469 24.0938 22.7344 23.8594L23.8125 22.7812C24.0469 22.5938 24.0469 22.2188 23.8125 21.9844ZM9.75 17.25C5.57812 17.25 2.25 13.9219 2.25 9.75C2.25 5.625 5.57812 2.25 9.75 2.25C13.875 2.25 17.25 5.625 17.25 9.75C17.25 13.9219 13.875 17.25 9.75 17.25Z" fill="#DD3564" />
-          </svg>
-        </button>
-      </form>
-    </div>
+    </transition>
   </div>
 </template>
 <script>
@@ -221,6 +238,9 @@ export default {
 
     closeMenu() {
       this.menuVisible = false
+    },
+    closeForm() {
+      this.inputActive = false
     }
   }
 }
@@ -230,7 +250,7 @@ export default {
 #fixedNav.scrolled {
   backdrop-filter: blur(28px);
   background: rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 99;
   transition: 0.5s;
 }
 </style>

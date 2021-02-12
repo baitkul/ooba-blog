@@ -8,12 +8,13 @@
         Рубрика данной статьи
       </span>
       <div class="flex flex-wrap mt-5">
-        <div
+        <NuxtLink
           v-for="(tag, idx) in data.tags"
           :key="idx"
+          :to="'/blogs/'+ tag.slug"
           class="px-3 py-3 mb-3 mr-3 border border-gray-300 rounded">
           {{ tag.title }}
-        </div>
+        </NuxtLink>
       </div>
     </div>
     <div
