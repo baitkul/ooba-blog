@@ -8,7 +8,7 @@
     </div>
     <div
       class="w-full mb-3 xl:w-3/12 lg:pt-10 lg:w-4/12">
-      <div v-if="loading" class="flex items-center justify-center w-full">
+      <div v-if="loading" class="items-center justify-center hidden w-full md:flex">
         <div style="height: 60px; width: 60px" class="mt-10 border-t-2 border-r-2 border-pink-600 rounded-full animate-spin"></div>
       </div>
       <RecommendSidebar v-else :data="records" />

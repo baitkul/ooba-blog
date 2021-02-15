@@ -21,7 +21,10 @@
       v-for="(blocks, idx) in data.body.blocks"
       :key="idx"
       class="mt-7">
-      <p v-if="blocks.type === 'paragraph'" v-html="blocks.data.text">
+      <p
+        v-if="blocks.type === 'paragraph'"
+        class="paragraph-block"
+        v-html="blocks.data.text">
       </p>
       <div v-if="blocks.type === 'image'" class="mt-5">
         <h3 class="text-xl font-bold">{{ blocks.data.caption }}</h3>
@@ -45,6 +48,19 @@
             :href="blocks.data.link">{{ blocks.data.input }}</a>
         </div>
       </div>
+      <div v-if="blocks.type === 'list'">
+        <ul
+          class="ml-10"
+          style="list-style-type: decimal !important;"
+        >
+          <li
+            v-for="(li, id) in blocks.data.items"
+            :key="id"
+          >
+            {{ li }}
+          </li>
+        </ul>
+      </div>
     </div>
 
   </div>
@@ -58,8 +74,11 @@ export default {
       default: () => {}
     }
   },
-  created() {
-    console.log(this.data)
-  }
 }
 </script>
+<style>
+  .paragraph-block > a {
+    text-decoration-style: solid !important;
+    text-decoration-line: underline !important;
+  }
+</style>
