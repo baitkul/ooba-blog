@@ -26,9 +26,9 @@
         class="paragraph-block"
         v-html="blocks.data.text">
       </p>
-      <div v-if="blocks.type === 'image'" class="mt-5">
+      <div v-if="blocks.type === 'image'">
         <h3 class="text-xl font-bold">{{ blocks.data.caption }}</h3>
-        <div class="mt-5 bg-gray-100 md:p-5">
+        <div class="mt-5 md:p-5">
           <img
             class="object-contain w-full"
             style="height: 367px"

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col lg:flex-row pt-nav container-auto">
+  <div class="flex flex-col lg:flex-row pt-nav">
     <div class="w-full pt-10 xl:w-9/12 lg:w-8/12">
       <div v-if="loading" class="flex items-center justify-center w-full">
         <div style="height: 60px; width: 60px" class="mt-10 border-t-2 border-r-2 border-pink-600 rounded-full animate-spin"></div>

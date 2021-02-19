@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageArticle />
-    <div style="margin-top: 160px">
+    <div class="mt">
       <div class="flex flex-col mb-10 rounded container-auto" style="backdrop-filter: blur(28px); background: rgba(0, 0, 0, 0.04);">
         <div class="flex flex-col items-center py-5 text-white lg:px-6 lg:pt-10 lg:justify-between lg:flex-row">
           <h1 class="mb-5 text-2xl font-bold text-center lg:m-0">
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="mt-10 ">
+        <div class="mt-5">
           <BlogList :list="model" />
         </div>
       </div>
@@ -52,3 +52,9 @@ export default {
 
 }
 </script>
+
+<style>
+.mt {
+  margin-top: 100px;
+}
+</style>

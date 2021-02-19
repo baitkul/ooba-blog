@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 160px">
+  <div style="margin-top: 120px">
     <div class="flex flex-col rounded" style="backdrop-filter: blur(28px); background: rgba(0, 0, 0, 0.04);">
       <div class="flex flex-col py-5 lg:px-6 lg:pt-10 lg:justify-between lg:flex-row">
         <h1 class="mb-5 text-2xl font-bold text-center lg:m-0">
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="mt-10" style="min-height: 75vh">
+      <div class="mt-5 md:mt-10" style="min-height: 75vh">
         <div v-if="loading" class="flex items-center justify-center">
           <div style="width: 60px; height: 60px;" class="border-t-2 border-l-2 border-pink-600 rounded-full animate-spin"></div>
         </div>

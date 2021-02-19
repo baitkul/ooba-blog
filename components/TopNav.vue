@@ -11,10 +11,12 @@
         </div>
 
         <transition
+          name="fade"
           enter-active-class="transition-opacity duration-100 ease-linear"
           leave-active-class="transition-opacity duration-100 ease-linear delay-75"
-          enter-class="opacity-80"
-          leave-to-class="opacity-80"
+          enter-class="opacity-50"
+          leave-to-class="opacity-50"
+          mode="out-in"
         >
           <div
             v-show="menuVisible"
@@ -22,10 +24,12 @@
             @click="closeMenu"
           >
             <transition
+              name="fade"
               enter-active-class="transition-transform duration-100 ease-out transform"
               leave-active-class="transition-transform duration-100 ease-in transform"
               enter-class="-translate-y-8"
               leave-to-class="-translate-y-8"
+              mode="out-in"
             >
               <div v-show="menuVisible" class="bg-white">
                 <div class="flex items-center h-20 px-4">
