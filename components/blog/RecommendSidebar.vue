@@ -1,30 +1,32 @@
 <template>
   <div
   >
-    <h2 class="text-2xl font-bold">
-      Рекомендуем вам
+    <h2 class="py-5 text-3xl font-semibold text-center">
+      Вам будет интересно
     </h2>
-    <div class="mt-5">
+    <div class="flex flex-wrap justify-between mt-7">
       <div
-        v-for="(item, idx) in data"
+        v-for="(item, idx) in records"
         :key="idx"
-        class="p-4 mb-3 bg-gray-100 rounded-md">
-        <NuxtLink
-          :to="'/blog/'+ item.slug"
-          class="text-xl font-bold"
-          style="word-break: break-word">
-          {{ item.title }}
-        </NuxtLink>
-        <p class="mt-3" v-html="firstBlock(item.body.blocks)">  </p>
-        <div class="flex flex-wrap mt-5">
+        class="overflow-hidden rounded-md recomended-record">
+        <div class="p-4 mb-3 bg-gray-100">
           <NuxtLink
-
-            v-for="tag in item.tags"
-            :key="tag._id"
-            :to="'/blogs/'+ tag.slug"
-            class="px-3 py-3 mb-2 mr-2 bg-white rounded">
-            {{ tag.title }}
+            :to="'/blog/'+ item.slug"
+            class="text-xl font-bold"
+            style="word-break: break-word">
+            {{ item.title }}
           </NuxtLink>
+          <p class="mt-3" v-html="firstBlock(item.body.blocks)">  </p>
+          <div class="flex flex-wrap mt-5">
+            <NuxtLink
+
+              v-for="tag in item.tags"
+              :key="tag._id"
+              :to="'/blogs/'+ tag.slug"
+              class="px-3 py-3 mb-2 mr-2 bg-white rounded">
+              {{ tag.title }}
+            </NuxtLink>
+          </div>
         </div>
       </div>
 
@@ -34,21 +36,37 @@
 
 <script>
 export default {
-  props: {
-    data: {
-      type: Array,
-      default: () => []
-    }
+  async fetch() {
+    const params = { page: 1, pageSize: 3 }
+    const { result } = await this.$axios.$get('/api/blog/public/articles/', { params })
+    this.records = result
   },
+
+  data: () => ({
+    records: undefined
+  }),
   created() {
     console.log(this.data)
   },
   methods: {
     firstBlock(blocks) {
       const filter = blocks.filter(bl => bl.type === 'paragraph')
-      return filter[0].data.text.length > 100 ? filter[0].data.text.slice(0, 100) + '...' : filter[0].data.text
+      return filter[0].data.text.length > 150 ? filter[0].data.text.slice(0, 150) + '...' : filter[0].data.text
     }
   }
 }
 </script>
+
+<style scoped>
+.recomended-record {
+  width: 100%;
+  min-height: auto;
+}
+
+@media (min-width: 768px) {
+  .recomended-record {
+    width: calc(33.3333% - 10px);
+  }
+}
+</style>
 

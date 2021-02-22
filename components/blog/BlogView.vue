@@ -1,37 +1,23 @@
 <template>
   <div v-if="data" class="pb-5 lg:pr-5">
-    <h1 class="text-3xl font-bold">
+    <h1 class="text-3xl font-bold text-center">
       {{ data.title }}
     </h1>
-    <div class="mt-10">
-      <span>
-        Рубрика данной статьи
-      </span>
-      <div class="flex flex-wrap mt-5">
-        <NuxtLink
-          v-for="(tag, idx) in data.tags"
-          :key="idx"
-          :to="'/blogs/'+ tag.slug"
-          class="px-3 py-3 mb-3 mr-3 border border-gray-300 rounded">
-          {{ tag.title }}
-        </NuxtLink>
-      </div>
-    </div>
+
     <div
       v-for="(blocks, idx) in data.body.blocks"
       :key="idx"
       class="mt-7">
       <p
         v-if="blocks.type === 'paragraph'"
-        class="paragraph-block"
+        class="text-center paragraph-block"
         v-html="blocks.data.text">
       </p>
       <div v-if="blocks.type === 'image'">
-        <h3 class="text-xl font-bold">{{ blocks.data.caption }}</h3>
-        <div class="mt-5 md:p-5">
+        <h3 class="text-xl font-bold text-center">{{ blocks.data.caption }}</h3>
+        <div class="flex items-center justify-center mt-2 md:p-5">
           <img
-            class="object-contain w-full"
-            style="height: 367px"
+            class="object-cover w-full blog-img"
             :src="blocks.data.file.url"
             alt="article" />
         </div>
@@ -63,6 +49,23 @@
       </div>
     </div>
 
+    <RecommendSidebar />
+
+    <div class="mt-10">
+      <p class="w-full text-center">
+        Рубрика данной статьи
+      </p>
+      <div class="flex flex-wrap justify-center mt-5">
+        <NuxtLink
+          v-for="(tag, idx) in data.tags"
+          :key="idx"
+          :to="'/blogs/'+ tag.slug"
+          class="px-3 py-3 mb-3 mr-3 border border-gray-300 rounded">
+          {{ tag.title }}
+        </NuxtLink>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -80,5 +83,18 @@ export default {
   .paragraph-block > a {
     text-decoration-style: solid !important;
     text-decoration-line: underline !important;
+  }
+
+  .blog-img {
+    width: 500px;
+    height: 500px;
+  }
+
+  @media (max-width: 500px) {
+    .blog-img {
+      width: 100%;
+      object-fit: contain;
+      height: auto;
+    }
   }
 </style>
