@@ -8,8 +8,16 @@
       <div
         v-for="(item, idx) in records"
         :key="idx"
-        class="overflow-hidden rounded-md recomended-record">
+        class="overflow-hidden rounded-md cursor-pointer recomended-record"
+        @click="$router.push({path: '/blog/' + item.slug})">
         <div class="p-4 mb-3 bg-gray-100">
+          <div class="w-full mb-5">
+            <img
+              class="object-cover w-full rounded"
+              :src="item.imageUrl"
+              style="height: 350px"
+              :alt="item.title" />
+          </div>
           <NuxtLink
             :to="'/blog/'+ item.slug"
             class="text-xl font-bold"
@@ -64,6 +72,12 @@ export default {
 }
 
 @media (min-width: 768px) {
+  .recomended-record {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (min-width: 1024px) {
   .recomended-record {
     width: calc(33.3333% - 10px);
   }

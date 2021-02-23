@@ -2,7 +2,7 @@
   <div class="flex flex-wrap" style="min-height: 75vh">
     <div v-if="list.length <= 0" class="flex items-center justify-center w-full h-full">
       <span class="mt-20 text-2xl font-bold text-pink-600">
-        Публикации пока нет...
+        Публикации пока отсутствует...
       </span>
     </div>
     <div
@@ -37,7 +37,7 @@
             {{ $utils.formatDate(item.createdAt) }}
           </div>
           <NuxtLink
-            :to="`/blog/${item.slug}`"
+            :to="`/blog/${item.slug} `"
             class="px-3 py-2 text-sm font-bold text-purple-600 uppercase break-normal border border-purple-600 outline-none xl:text-base xl:py-3 lg:text-xs xl:px-7 focus:outline-none hover:text-pink-50 hover:bg-purple-600"
           >
             Читать статью

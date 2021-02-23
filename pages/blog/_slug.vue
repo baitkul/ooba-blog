@@ -12,9 +12,15 @@
 export default {
   async fetch() {
     this.loading = true
-    const data = await this.$axios.$get('/api/blog/public/articles/' + this.$route.params.slug)
-    this.blog = data
-    this.loading = false
+    try {
+      const data = await this.$axios.$get('/api/blog/public/articles/' + this.$route.params.slug)
+      this.blog = data
+      this.loading = false
+    } catch (e) {
+      this.$router.push({ path: '/blogs' })
+    } finally {
+      this.loading = false
+    }
   },
   layout: 'blog',
 

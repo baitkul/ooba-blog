@@ -141,10 +141,11 @@
       </nav>
     </div>
     <transition
-      enter-active-class="transition-transform duration-200 ease-out transform"
-      leave-active-class="transition-transform duration-200 ease-in transform"
-      enter-class="opacity-100"
-      leave-to-class="translate-y-4"
+      enter-active-class="transition-all duration-200 ease-out transform"
+      leave-active-class="transition-all duration-200 ease-in transform"
+      enter-class="opacity-50"
+      leave-to-class="opacity-50"
+      mode="out-in"
     >
       <div
         v-show="inputActive"
