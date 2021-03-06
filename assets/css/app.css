@@ -30,6 +30,11 @@ input:-internal-autofill-selected:active {
     display: none;
   }
 }
+
+.max-w {
+  max-width: 1000px;
+}
+
 .container-auto {
   max-width: 1440px;
   width: 100%;
