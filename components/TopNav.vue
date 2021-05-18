@@ -5,7 +5,7 @@
       class="fixed top-0 left-0 w-full"
       style="transition: 0.5s; z-index: 10;"
       :class="{ 'scrolled': !view.atTopOfPage }">
-      <nav class="flex items-center justify-between text-white container-auto" style="height: 80px">
+      <nav class="flex items-center justify-between container-auto" style="height: 80px">
         <div>
           <NuxtLink to="/"> <img src="/images/Logo.svg" alt="logo" /></NuxtLink>
         </div>

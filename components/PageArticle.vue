@@ -1,11 +1,6 @@
 <template>
   <div>
-    <div
-      v-lazy:background-image="'/images/background.jpg'"
-      class="absolute top-0 left-0 w-full bg-center bg-no-repeat bg-cover"
-      style="height: 1000px; width: 100% !important; z-index: -1;"
-    ></div>
-    <div class="flex container-auto pt" style="color: #fff">
+    <div class="flex container-auto pt">
       <div class="mt-20 md:w-6/12">
         <h3 class="font-bold title">
           Польза и вдохновение

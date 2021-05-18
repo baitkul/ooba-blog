@@ -17,7 +17,7 @@
         v-for="(button, key) in props.buttons"
         :key="key"
         v-bind="button"
-        class="px-2 rounded"
+        class="px-2 text-black rounded"
         :class="{'border border-gray-100': button.active}"
         @page-change="change(button.page)"
       />
