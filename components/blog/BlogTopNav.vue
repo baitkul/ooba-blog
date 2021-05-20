@@ -50,7 +50,7 @@
                   v-for="(menu, idx) in menus"
                   :key="idx"
                   :to="'/blogs/'+ menu.slug"
-                  exact-active-class="text-pink-600"
+                  exact-active-class="text-primary"
                   class="flex items-center px-4 text-black border-t border-gray-300 h-14"
                 >
                   {{ menu.title }}

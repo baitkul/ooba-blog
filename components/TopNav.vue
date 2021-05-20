@@ -2,8 +2,8 @@
   <div>
     <div
       id="fixedNav"
-      class="fixed top-0 left-0 w-full"
-      style="transition: 0.5s; z-index: 10;"
+      class="fixed top-0 left-0 z-10 w-full bg-white"
+      style="transition: 0.5s; z-index: 50;"
       :class="{ 'scrolled': !view.atTopOfPage }">
       <nav class="flex items-center justify-between container-auto" style="height: 80px">
         <div>
@@ -54,7 +54,7 @@
                   v-for="(menu, idx) in menus"
                   :key="idx"
                   :to="'/blogs/'+ menu.slug"
-                  exact-active-class="text-pink-600"
+                  exact-active-class="text-primary"
                   class="flex items-center px-4 text-black border-t border-gray-300 h-14"
                 >
                   {{ menu.title }}
@@ -85,20 +85,14 @@
         <div class="flex ">
           <div>
             <button
-              class="px-4 py-3 text-pink-600 outline-none focus-within:outline-none focus:outline-none"
+              class="flex items-center justify-center px-4 py-3 outline-none focus-within:outline-none focus:outline-none"
               style="line-height: 30px"
               @click="inputFocus"
             >
-              <i v-if="!inputActive">
-                <svg
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M23.8125 21.9844L18.1406 16.3125C18 16.2188 17.8594 16.125 17.7188 16.125H17.1094C18.5625 14.4375 19.5 12.1875 19.5 9.75C19.5 4.40625 15.0938 0 9.75 0C4.35938 0 0 4.40625 0 9.75C0 15.1406 4.35938 19.5 9.75 19.5C12.1875 19.5 14.3906 18.6094 16.125 17.1562V17.7656C16.125 17.9062 16.1719 18.0469 16.2656 18.1875L21.9375 23.8594C22.1719 24.0938 22.5469 24.0938 22.7344 23.8594L23.8125 22.7812C24.0469 22.5938 24.0469 22.2188 23.8125 21.9844ZM9.75 17.25C5.57812 17.25 2.25 13.9219 2.25 9.75C2.25 5.625 5.57812 2.25 9.75 2.25C13.875 2.25 17.25 5.625 17.25 9.75C17.25 13.9219 13.875 17.25 9.75 17.25Z" fill="#DD3564" />
-                </svg>
+              <i
+                v-if="!inputActive"
 
+                class="flex items-center justify-center pt-1 xl:pt-0 text-primary xl:text-black fas fa-search">
               </i>
               <i
                 v-else

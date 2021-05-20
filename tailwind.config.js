@@ -28,7 +28,8 @@ module.exports = {
       green: colors.emerald,
       purple: colors.purple,
       pink: colors.pink,
-      yellow: colors.amber
+      yellow: colors.amber,
+      primary: '#FF3C6A'
     },
     extend: {}
   },

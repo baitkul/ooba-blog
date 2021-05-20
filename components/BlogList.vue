@@ -14,7 +14,7 @@
         :src="item.imageUrl"
         class="object-cover w-full h400"
       />
-      <div class="p-5 bg-white">
+      <div class="p-5 bg-white shadow-xl">
         <h2 class="font-bold whitespace-normal xl:text-2xl text-md" style="word-wrap: break-word">
           {{ item.title }}
         </h2>
@@ -38,9 +38,9 @@
           </div>
           <NuxtLink
             :to="`/blog/${item.slug} `"
-            class="px-3 py-2 text-sm font-bold text-purple-600 uppercase break-normal border border-purple-600 outline-none xl:text-base xl:py-3 lg:text-xs xl:px-7 focus:outline-none hover:text-pink-50 hover:bg-purple-600"
+            class="px-3 py-2 text-sm font-bold uppercase break-normal border outline-none border-primary text-primary xl:text-base xl:py-3 lg:text-xs xl:px-7 focus:outline-none hover:text-pink-50 hover:bg-primary"
           >
-            Читать статью
+            Читать
           </NuxtLink>
         </div>
       </div>

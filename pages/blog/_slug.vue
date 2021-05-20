@@ -2,7 +2,7 @@
   <div class="flex flex-col lg:flex-row pt-nav">
     <div class="w-full pt-10 overflow-hidden">
       <div v-if="loading" class="flex items-center justify-center w-full">
-        <div style="height: 60px; width: 60px" class="mt-10 border-t-2 border-r-2 border-pink-600 rounded-full animate-spin"></div>
+        <i class="text-5xl far fa-spinner-third text-primary animate-spin"></i>
       </div>
       <BlogView v-else :data="blog" />
     </div>

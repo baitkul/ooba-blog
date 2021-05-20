@@ -16,8 +16,8 @@
       </div>
 
       <div class="mt-5 md:mt-10" style="min-height: 75vh">
-        <div v-if="loading" class="flex items-center justify-center">
-          <div style="width: 60px; height: 60px;" class="border-t-2 border-l-2 border-pink-600 rounded-full animate-spin"></div>
+        <div v-if="loading" class="flex items-center justify-center py-20">
+          <i class="text-5xl far fa-spinner-third text-primary animate-spin"></i>
         </div>
         <BlogList v-else :list="model" />
       </div>
